@@ -1,0 +1,15 @@
+{
+  "name": "blue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node Discord/index.js"
+  },
+  "author": "Xanax",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^13.3.1",
+    "dotenv": "^10.0.0"
+  }
+}
