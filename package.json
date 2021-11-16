@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node Discord/index.js"
+    "test": "node src/index.js"
   },
   "author": "Xanax",
   "license": "ISC",
