@@ -13,6 +13,6 @@ const commandFolders = fs.readdirSync("./src/commands");
     require(`./functions/${file}`)(client);
     }
     client.handleEvents(eventFiles, './src/events');
-    client.handleCommands(eventFolders, './src/commands');
+    client.handleCommands(commandFolders, './src/commands');
     client.login(process.env.TOKEN);
 })();
