@@ -5,7 +5,7 @@ const moment = require("moment");
 require("moment-duration-format");
 module.exports = {
     data:new SlashCommandBuilder()
-    .setName('Uptime')
+    .setName('uptime')
     .setDescription('How long the bot has been operational'),
     async execute(interaction){
         const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
