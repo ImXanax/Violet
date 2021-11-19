@@ -7,7 +7,7 @@ module.exports = {
     data:new SlashCommandBuilder()
     .setName('uptime')
     .setDescription('How long the bot has been operational'),
-    async execute(interaction){
+    async execute(interaction,client){
         const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
         const uptime = new MessageEmbed().setDescription(`\`\`\`${duration}\`\`\``);
         await interaction.reply(uptime);
