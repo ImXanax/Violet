@@ -2,16 +2,17 @@ const { Embed } = require("@discordjs/builders");
 const {MessageEmbed} = require("discord.js");
 module.exports = {
     name: 'messageCreate',
-    once: true,
+    on: true,
     async execute(message,client){
-        let userID = "413755451373518864";
-        console.log(message.content);
-        if(message.author === userID) {
-            if(message.content === 'psst')
-            {
-                message.channel.send('Hello there!');
+        console.log('fire');
+        let userId = '413755451373518864';
+        console.log('fired');
+        if (message.author === userId){
+            console.log('fireed');
+            if(message.content ==='Hii'){
+                console.log('fireeed');
+                message.channel.send('HELLO');
             }
         }
-        
     },
 };
