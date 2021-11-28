@@ -4,6 +4,7 @@ module.exports = {
     name: 'messageCreate',
     on: true,
     async execute(client,message){
+     if(message.author.bot) return;
       if(message.channel.type === 'DM'){
           if(message.content==='hi'){
             let response = new MessageEmbed()
