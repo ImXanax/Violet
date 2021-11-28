@@ -3,7 +3,7 @@ const {MessageEmbed} = require("discord.js");
 module.exports = {
     name: 'messageCreate',
     on: true,
-    async execute(message,client){
+    async execute(client,message){
         if (message.channel.type === 'DM') {
             console.log(message.content)
         }
