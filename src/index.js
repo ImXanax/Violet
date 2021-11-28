@@ -1,6 +1,6 @@
 const {Client , Intents, Collection} = require('discord.js');
 const fs = require('fs');
-const client = new Client({partials: ["MESSAGE", "CHANNEL", "REACTION"],
+const client = new Client({partials: ["MESSAGE", "CHANNEL", "REACTION","USER"],
 intents:[
         Intents.FLAGS.GUILDS,
         Intents.FLAGS.GUILD_MESSAGES,

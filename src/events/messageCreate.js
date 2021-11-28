@@ -5,10 +5,12 @@ module.exports = {
     on: true,
     async execute(client,message){
       if(message.channel.type === 'DM'){
+          if(message.content==='hi'){
             let response = new MessageEmbed()
-                .setDescription('Hello Please Dont Use Me To Store Your Things Thanks!')
+                .setDescription('Test')
                 .setColor('#36057c')
              message.author.send({embed:[response]})
+            }
         }
     },
 };
