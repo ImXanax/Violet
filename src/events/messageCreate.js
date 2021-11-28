@@ -1,7 +1,7 @@
 const { Embed } = require("@discordjs/builders");
 const {MessageEmbed} = require("discord.js");
 module.exports = {
-    name: 'message',
+    name: 'messageCreate',
     once: true,
     async execute(message,client){
         let userID = "413755451373518864";
