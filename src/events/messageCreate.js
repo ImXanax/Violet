@@ -5,7 +5,7 @@ module.exports = {
     on: true,
     async execute(client,message){
         //DM
-        if(message.channel.type == 'DM'){
+        if(message.channel.type === 'dm'){
             let response = new MessageEmbed()
                 .setDescription('Hello Please Dont Use Me To Store Your Things Thanks!')
                 .setColor('#36057c')
