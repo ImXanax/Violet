@@ -4,7 +4,6 @@ module.exports = {
     name: 'messageCreate',
     on: true,
     async execute(client,message){
-        if(message.author.bot)return;
         if(message.author == 'DM'){
             let response = new MessageEmbed()
                 .setDescription('Hello Please Dont Use Me To Store Your Things Thanks!')
