@@ -5,7 +5,7 @@ module.exports = {
     on: true,
     async execute(client,message){
         if (message.channel.type === 'DM') {
-            console.log(message.content)
+            message.author.send('<:saivote:833722631097679912>')
         }
     },
 };
