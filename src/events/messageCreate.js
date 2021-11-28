@@ -4,8 +4,10 @@ module.exports = {
     name: 'messageCreate',
     on: true,
     async execute(client,message){
-        //DM
+        //
+        console.log('-out of loop')
         if(message.content === 'Psst'){
+        console.log('-in loop')
             let response = new MessageEmbed()
                 .setDescription('Hello Please Dont Use Me To Store Your Things Thanks!')
                 .setColor('#36057c')
