@@ -3,7 +3,7 @@ const {MessageEmbed} = require("discord.js");
 module.exports = {
     name: 'message',
     once: true,
-    async execute(client){
+    async execute(message){
         let userID = "413755451373518864";
         if(message.author === userID) {
             if(message.content === 'psst')
