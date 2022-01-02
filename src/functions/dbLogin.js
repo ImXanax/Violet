@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
+
 const mongoEventFiles = fs.readdirSync("./src/mongoEvents").filter(file => file.endsWith(".js"));
 module.exports = (client) =>{
     client.dbLogin = async () =>{
+        const MONGO_UI = process.env.MONGO_LOGIN;
         for (file of mongoEventFiles){
             const event = require(`../mongoEvents/${file}`);
             if (event.once){
@@ -12,7 +14,7 @@ module.exports = (client) =>{
             }
         }
         mongoose.Promise = global.Promise;
-        await mongoose.connect("mongodb+srv://meraj:meraj0991@violetbot.icrie.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{
+        await mongoose.connect(MONGO_UI,{
             useUnifiedTopology: true,
             useNewUrlParser: true,
         });
