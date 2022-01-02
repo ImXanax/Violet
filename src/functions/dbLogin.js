@@ -12,7 +12,7 @@ module.exports = (client) =>{
             }
         }
         mongoose.Promise = global.Promise;
-        await mongoose.connect(process.env.MONGO_DB,{
+        await mongoose.connect("mongodb+srv://meraj:meraj0991@violetbot.icrie.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{
             useUnifiedTopology: true,
             useNewUrlParser: true,
         });
