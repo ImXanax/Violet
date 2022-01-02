@@ -16,7 +16,7 @@ module.exports = {
             );
         const embed = new MessageEmbed()
                 .setColor("DARK_PURPLE")
-                setDescription("HERE IS THE PING FOR YOU BESTIE")
+                .setDescription("HERE IS THE PING FOR YOU BESTIE")
         await interaction.reply({content:"Pong Bestie", embeds: [embed] ,components: [row] })
     }
 }
