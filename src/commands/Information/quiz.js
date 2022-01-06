@@ -6,14 +6,18 @@ const quiz = require('./quiz.json');
 module.exports = {
     data:new SlashCommandBuilder()
         .setName('quiz')
-        .setDescription('How long the bot has been operational'),
+        .setDescription('Quiz for twenty one pilots nerds'),
 
     async execute(interaction){ 
         const item = quiz[Math.floor(Math.random()* quiz.length)];
         const filter = response =>{
             return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
         };
-        interaction.reply(item.question,{fetchReply:true})
+        const q = new MessageEmbed()
+            .setDescription(item.question)
+            .setColor("#36057c")
+            .setFooter("Respond with typing your answer.")
+        interaction.reply({embeds:[q]},{fetchReply:true})
             .then(()=>{
                 interaction.channel.awaitMessages({filter , max:1,time:30000,errors:['time']})
                 .then(collected=>{
