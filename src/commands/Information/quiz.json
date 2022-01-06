@@ -27,5 +27,43 @@
 	{
 		"question": "What date did Scaled and Icy release?\n1)**May 23 , 2021**\n2)**May 21 , 2021**\n3)**April 23 , 2021**\n4)**April 21 , 2021**",
 		"answers": ["May 21 , 2021", "May 21","21 May" , "21 may , 2021"]
+	},
+	{
+		"question": "____ Gravestones",
+		"answers": ["Neon"]
+	},
+	{
+		"question": "____ Away",
+		"answers": ["Shy"]
+	},
+	{
+		"question": "____ Radio",
+		"answers": ["car"]
+	},
+	{
+		"question": "Kitchen ____",
+		"answers": ["sink"]
+	},
+	{
+		"question": "____ Eyes",
+		"answers": ["glowing"]
+	},
+	{
+		"question": "Before You ____ Your",
+		"answers": ["start"]
+	},
+	{
+		"question": "March to the ____",
+		"answers": ["Sea"]
+	},
+	{
+		"question": "____ with a Pen",
+		"answers": ["addict"]
+	},
+	{
+		"question": "Lyrics: *Should I Keep it on ____*",
+		"answers": ["display"]
 	}
 ]
+
+	
