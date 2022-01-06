@@ -1,10 +1,31 @@
 [
 	{
-		"question": "Who Is The Lead Singer Of Twenty One Pilots?",
-		"answers": ["Tyler Joseph"]
+		"question": "What song this lyrics is for `Like neon inside the glass`\n1)**Morph**\n2)**Bandito**\n3)**Neon Gravestones**\n4)Leave The City",
+		"answers": ["Bandito"]
 	},
 	{
-		"question": "Who Has Been Seen Peeing From The Band Members?",
-		"answers": ["Tyler", "Josh", "Tyler And Josh", "Ned"]
+		"question": "Who Has Been Seen Peeing From The Band Members?\n1)**Tyler**\n2)**Josh**\n3)**Ned**\n4)**Tyler and Josh**",
+		"answers": ["Tyler And Josh"]
+	},
+	{
+		"question": "How many tracks does Trench contain?\n1)**13**\n2)**14**\n3)**15**\n4)**12**",
+		"answers": ["14", "Fourteen"]
+	}
+	,
+	{
+		"question": "How many tracks does Scaled and Icy contain?\n1)**13**\n2)**12**\n3)**10**\n4)**11**",
+		"answers": ["11", "eleven"]
+	},
+	{
+		"question": "How many tracks does Blurryface contain?\n1)**14**\n2)**12**\n3)**10**\n4)**13**",
+		"answers": ["14", "fourteen"]
+	},
+	{
+		"question": "How many times the chorus is repeated in Redecorate?\n1)**3**\n2)**2**\n3)**4**\n4)**5**",
+		"answers": ["3", "three"]
+	},
+	{
+		"question": "What date did Scaled and Icy release?\n1)**May 23 , 2021**\n2)**May 21 , 2021**\n3)**April 23 , 2021**\n4)**April 21 , 2021**",
+		"answers": ["May 21 , 2021", "May 21","21 May" , "21 may , 2021"]
 	}
 ]
