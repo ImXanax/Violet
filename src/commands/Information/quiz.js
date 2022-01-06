@@ -17,15 +17,15 @@ module.exports = {
             .setDescription(item.question)
             .setColor("#36057c")
             .setFooter("Respond with typing your answer.")
-        const r = new MessageEmbed()
-            .setDescription(`${collected.first().author} Correct Answer.`)
-            .setColor("#36057c")
         
         interaction.reply({embeds:[q]},{fetchReply:true})
             .then(()=>{
                 interaction.channel.awaitMessages({filter , max:1,time:30000,errors:['time']})
                 .then(collected=>{
                     // correct answer
+                    const r = new MessageEmbed()
+                        .setDescription(`${collected.first().author} Correct Answer.`)
+                        .setColor("#36057c")
                     interaction.followUp({embeds:[r]})
                 })
                 .catch(collected => {
