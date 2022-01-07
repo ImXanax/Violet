@@ -24,7 +24,11 @@ module.exports={
         const channel= interaction.options.getChannel('destination');
         const role = interaction.options.getRole('muted');
         const mentionable = interaction.options.getMentionable('mentionable');
+        try{
         interaction.reply([string,integer,number,boolean,user,member,channel,role,mentionable]);
-
+        }
+        catch(err){ 
+            console.log(err);
+        }   
     }
 }
