@@ -11,6 +11,7 @@ module.exports = {
             await dm.send({content:"hello"})
             .then(()=> {
                 ctx.reply({content:"Message Sent!"})
+                console.log(ctx);
             }).catch(()=>{
                 ctx.reply({content:"There was an issue sending the message"});
             })
