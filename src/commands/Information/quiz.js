@@ -12,10 +12,8 @@ module.exports = {
         // let attempts = 2;
         const item = quiz[Math.floor(Math.random()* quiz.length)];
         const filter = response =>{
-            return item.answers.some(answer =>{ 
-                answer.toLowerCase() === response.content.toLowerCase()}
-                );
-        };
+            return item.answers.some(answer =>answer.toLowerCase() === response.content.toLowerCase());
+        }
         const q = new MessageEmbed()
             .setDescription(item.question)
             .setColor("#36057c")
