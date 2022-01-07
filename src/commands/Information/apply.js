@@ -6,10 +6,14 @@ module.exports = {
     .setName('apply')
     .setDescription('sends DM for no reason'),
     async execute(ctx){
-        let dmMessage = Message;
         try{
             const dm = await ctx.member.createDM()
-            dmMessage = await dm.send({content:"hello"})
+            await dm.send({content:"hello"})
+            .then(()=> {
+                ctx.reply({content:"Message Sent!"})
+            }).catch(()=>{
+                ctx.reply({content:"There was an issue sending the message"});
+            })
         }catch(e){
             console.error(e);
         }
