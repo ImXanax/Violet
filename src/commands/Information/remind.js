@@ -16,10 +16,10 @@ module.exports = {
             .setDescription("describes")    
             ),
     async execute(ctx){
-            if(ctx.opt.getSubcommand() === 'new'){
+            if(ctx.options.getSubcommand() === 'new'){
                 ctx.reply('new')
             }
-            else if(ctx.opt.getSubcommand() === 'old'){
+            else if(ctx.options.getSubcommand() === 'old'){
                 ctx.reply('old')
             }
             else{
