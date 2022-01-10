@@ -5,7 +5,7 @@ module.exports = {
     data:new SlashCommandBuilder()
     .setName('remind')
     .setDescription('sends DM for no reason')
-    .addSubcommand(subcommand => 
+    .addSubcommand(subcommand =>
         subcommand
             .setName('new')
             .setDescription('Create a new reminder')
