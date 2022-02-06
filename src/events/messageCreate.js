@@ -5,5 +5,4 @@ module.exports = {
     on: true,
     async execute(client,message){
     }
-     
 };

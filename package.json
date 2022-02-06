@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node src/index.js"
+    "x": "nodemon src/index.js"
   },
   "author": "Xanax",
   "license": "ISC",
@@ -19,6 +19,7 @@
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
     "mongoose": "^6.1.4",
+    "nodemon": "^2.0.15",
     "parse-duration": "^1.0.2"
   },
   "engines": {
