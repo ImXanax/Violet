@@ -6,8 +6,8 @@ module.exports = {
     data:new SlashCommandBuilder()
     .setName('ping')
     .setDescription('Replies With Pong'),
-    async execute(interaction){
-        const embed  = new MessageEmbed().setDescription("Pong!").setColor("#36057c")
-        interaction.reply({embeds:[embed]});
+    async execute(ctx,client){
+        const embed  = new MessageEmbed().setTitle("PONG").setDescription(`**Latency:**${Date.now() - ctx.createdTimestamp}ms\n**API:**${Math.round(client.ws.ping)}ms`).setColor("#36057c")
+        ctx.reply({embeds:[embed]});
     }
 }
