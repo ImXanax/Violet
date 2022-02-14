@@ -24,7 +24,7 @@ module.exports = (client) =>{
                             const dm = await user.createDM();
                             const dmEmbed = new MessageEmbed()
                                 .setTitle(`YOUR REMINDER`)
-                                .setDescription(`Reminder: ${doc.reason} \nAt: ${tstr}`)
+                                .setDescription(`**Reminder:** ${doc.reason} \n**At:** ${tstr}`)
                                 .setColor(`#36057c`)
                             await dm.send({embeds:[dmEmbed]})
                         } catch (err) { console.log(err) }

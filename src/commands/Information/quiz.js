@@ -8,7 +8,7 @@ module.exports = {
         .setName('quiz')
         .setDescription('Quiz for twenty one pilots nerds'),
 
-    async execute(interaction){ 
+    async execute(ctx){ 
         // let attempts = 2;
         const item = quiz[Math.floor(Math.random()* quiz.length)];
         const filter = response =>{
@@ -19,19 +19,19 @@ module.exports = {
             .setColor("#36057c")
             .setFooter("Respond with typing your answer.")
         
-        interaction.reply({embeds:[q]},{fetchReply:true})
+        ctx.reply({embeds:[q]},{fetchReply:true})
             .then(()=>{
-                interaction.channel.awaitMessages({filter , max:1,time:30000,errors:['time']})
+                ctx.channel.awaitMessages({filter , max:1,time:30000,errors:['time']})
                 .then(collected=>{
                     // correct answer
                     const r = new MessageEmbed()
                         .setDescription(`${collected.first().author} Correct Answer.`)
                         .setColor("#36057c")
-                    interaction.followUp({embeds:[r]})
+                    ctx.followUp({embeds:[r]})
                 })
                 .catch(collected => {
                     // time ran out 
-                    interaction.followUp(`Looks like nobody got the right answer`);
+                    ctx.followUp(`Looks like nobody got the right answer`);
                 });
             });
     }
