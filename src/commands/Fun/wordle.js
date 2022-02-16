@@ -14,7 +14,7 @@ module.exports = {
         let timesUp = false;
         const filter = r => r.author.id === ctx.member.id;
         const checkMessage = (m) => {
-            const word = ['c', 'u', 'r', 's', 'e'];
+            const word = ['p', 'r', 'i', 'c', 'e'];
             const wordStr = word.join('');
             const guessStr = m.join('').toLowerCase();
             console.log(`WORD: ${wordStr}\nGUESS: ${guessStr}`);
@@ -112,6 +112,11 @@ module.exports = {
                             .setDescription(`**GREAT JOB YOU WON!!!**`)
                             .setColor(`#36057c`)
                         ctx.editReply({ content: `** **`, embeds: [winEmbed]});
+                    }else if(guessCounter <= 7){
+                        const guessEmbed = new MessageEmbed()
+                            .setDescription(`**YOU USED ALL YOUR GUESSES...**`)
+                            .setColor(`#36057c`)
+                        ctx.editReply({ content: `** **`, embeds: [guessEmbed]});
                     }
                 })
             }).catch(e => console.log(e))
