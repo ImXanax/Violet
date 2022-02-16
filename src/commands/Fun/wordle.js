@@ -14,7 +14,7 @@ module.exports = {
         let timesUp = false;
         const filter = r => r.author.id === ctx.member.id;
         const checkMessage = (m) => {
-            const word = ['p', 'u', 'r', 's', 'e'];
+            const word = ['c', 'u', 'r', 's', 'e'];
             const wordStr = word.join('');
             const guessStr = m.join('').toLowerCase();
             console.log(`WORD: ${wordStr}\nGUESS: ${guessStr}`);
@@ -26,21 +26,21 @@ module.exports = {
                 if (m[i].toLowerCase() === word[i]) {
                     cTracker += 1;
                     console.log(`CORRECT || ${m[i]} - ${word[i]}`)
-                    arr.push(`:green_square:`)
-                    mEmoji.push(`:regional_indicator_${m[i].toLowerCase()}:`)
+                    arr.push(` :green_square: `)
+                    mEmoji.push(` :regional_indicator_${m[i].toLowerCase()}: `)
 
                 }
                 //if character exists and is not in the correct spot
                 else if (wordStr.includes(m[i].toLowerCase())) {
                     console.log(`PRESENT || ${m[i]} - ${word[i]}`);
-                    arr.push(`:yellow_square:`);
-                    mEmoji.push(`:regional_indicator_${m[i].toLowerCase()}:`)
+                    arr.push(` :yellow_square: `);
+                    mEmoji.push(` :regional_indicator_${m[i].toLowerCase()}: `)
                 }
                 //if character is not in the word
                 else {
                     console.log(`ABSENT || ${m[i]} -> ${wordStr}`)
-                    arr.push(`<:dark_large_square:942867428097019915>`);
-                    mEmoji.push(`:regional_indicator_${m[i].toLowerCase()}:`)
+                    arr.push(` <:dark_large_square:942867428097019915> `);
+                    mEmoji.push(` :regional_indicator_${m[i].toLowerCase()}: `)
                 }
             }
             //console.log(`RESULT OF ARRAY: ${arr}`)
