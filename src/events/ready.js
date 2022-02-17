@@ -10,11 +10,11 @@ module.exports = {
         console.log('✅ The bot is online -l||l-');
 
         const presenceArr = [
-            `o_o`,
-            `-_o`,
-            `-_-`,
-            `o_-`,
-            `O_O`,
+            `(╯°□°）╯︵ ┻━┻`,
+            `\\(°□°)/︵ ┻━┻ `,
+            `‿( ́ ̵ _-\`)‿`,
+            `┬─┬ ノ( ゜-゜ノ)`,
+            `(⌐■_■)`,
         ]
         let i=0;
         setInterval(() => {
@@ -24,7 +24,7 @@ module.exports = {
                     type: `WATCHING`,
                    }] 
             });
-        }, 10000);
+        }, 5000);
         
     },
 };
