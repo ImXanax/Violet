@@ -8,5 +8,23 @@ module.exports = {
         const embed = new MessageEmbed().setDescription(`\`\`\`All System's Operational\`\`\``).setColor('#36057c')
         client.channels.cache.get('762670306824290321').send({embeds:[embed]});
         console.log('✅ The bot is online -l||l-');
+
+        const presenceArr = [
+            `o_o`,
+            `-_o`,
+            `-_-`,
+            `o_-`,
+            `O_O`,
+        ]
+        let i=0;
+        setInterval(() => {
+            client.user.setPresence({
+                activities: [{ 
+                    name: presenceArr[i++ % presenceArr.length],
+                    type: `WATCHING`,
+                   }] 
+            });
+        }, 10000);
+        
     },
 };

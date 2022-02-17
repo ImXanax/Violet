@@ -6,21 +6,26 @@ module.exports = {
         .setName('wordle')
         .setDescription('fun guessing game with words'),
     async execute(ctx, client) {
+
         let correctLetters = 0;
         let blockDiagram = '';
-        let i = 0;
         let guessCounter = 1;
         let bD = '';
         let timesUp = false;
+
         const filter = r => r.author.id === ctx.member.id;
+
         const checkMessage = (m) => {
+
             const word = ['p', 'r', 'i', 'c', 'e'];
             const wordStr = word.join('');
             const guessStr = m.join('').toLowerCase();
-            console.log(`WORD: ${wordStr}\nGUESS: ${guessStr}`);
             let arr = [];
             let mEmoji = [];
             let cTracker = 0;
+
+            console.log(`WORD: ${wordStr}\nGUESS: ${guessStr}`);
+
             for (let i = 0; i < 5; i++) {
                 //if character exists and is in correct spot
                 if (m[i].toLowerCase() === word[i]) {
@@ -43,8 +48,7 @@ module.exports = {
                     mEmoji.push(` :regional_indicator_${m[i].toLowerCase()}: `)
                 }
             }
-            //console.log(`RESULT OF ARRAY: ${arr}`)
-            //console.log(`RESULT OF LETTERS: ${mEmoji}`)
+
             let result = arr.join('');
             let textResult = mEmoji.join('');
             return [`${textResult}\n${result}`, cTracker];
@@ -53,8 +57,10 @@ module.exports = {
         const embed = new MessageEmbed()
             .setDescription(`**GUIDE:**\n:green_square: = \`LETTER EXISTS AND IS IN THE CORRECT SPOT\`\n:yellow_square: = \`LETTER EXISTS BUT IT'S NOT IN THE CORRECT SPOT\`\n<:dark_large_square:942867428097019915> = \`LETTER DOESN'T EXIST IN THE WORD\`\n**Guess a word to start off...**`)
             .setColor(`#36057c`)
+
         ctx.reply({embeds: [embed],ephemeral:true})
             .then(() => {
+                //15m inactivity to stop the collection
                 setTimeout(() => {
                     timesUp = true;
                     console.log(`⌛ Ran out of time...`)
@@ -67,24 +73,28 @@ module.exports = {
                         console.log(`🔹 COLLECTED: ${m.content}`)
                         let msg = m.content;
                         msg = msg.split('');
-                        //console.log(msg.length);
+
                         if (msg.length === 5) {
                             bD = checkMessage(msg);
                             correctLetters = bD.pop();
                             blockDiagram += `\n${bD[0]}`
-                            //console.log(`RESULT OF ARRAY AF: ${blockDiagram}`);
+
                             ctx.editReply(blockDiagram);
+
                             const embedEdit = new MessageEmbed()
                                 .setDescription(`**GUIDE:**\n:green_square: = \`LETTER EXISTS AND IS IN THE CORRECT SPOT\`\n:yellow_square: = \`LETTER EXISTS BUT IT'S NOT IN THE CORRECT SPOT\`\n<:dark_large_square:942867428097019915> = \`LETTER DOESN'T EXIST IN THE WORD\`\n**GUESS: [${guessCounter++}/ 6]**`)
                                 .setColor(`#36057c`)
                                 .setFooter(`to stop the game type "QUIT"`)
+
                             ctx.editReply({ embeds: [embedEdit]})
+
                             try{
                                 console.log(`-> deleting... ${m.content}`)
                                 m.delete()
                             }catch(e){
                                 console.log(e)
                             }
+                            //check for correct answer
                             if(correctLetters === 5){
                                 console.log(`CORRECT ANSWER: ${correctLetters}`)
                                 collector.stop()
@@ -104,18 +114,18 @@ module.exports = {
                     else if (timesUp) {
                         const endTimeEmbed = new MessageEmbed()
                             .setDescription(`**YOU RAN OUT OF TIME...**`)
-                            .setColor(`#36057c`)
+                            .setColor(`#ac2d35`)
                         ctx.editReply({ content: `** **`, embeds: [endTimeEmbed]});
                     }
                     else if(correctLetters === 5){
                         const winEmbed = new MessageEmbed()
                             .setDescription(`**GREAT JOB YOU WON!!!**`)
-                            .setColor(`#36057c`)
+                            .setColor(`#377e4d`)
                         ctx.editReply({ content: `** **`, embeds: [winEmbed]});
                     }else if(guessCounter <= 7){
                         const guessEmbed = new MessageEmbed()
                             .setDescription(`**YOU USED ALL YOUR GUESSES...**`)
-                            .setColor(`#36057c`)
+                            .setColor(`#ac2d35`)
                         ctx.editReply({ content: `** **`, embeds: [guessEmbed]});
                     }
                 })
