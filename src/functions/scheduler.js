@@ -9,15 +9,12 @@ module.exports = (client) =>{
         setInterval(() => {
             console.log("═╣INTERVAL STARTED");
             remindSchema.find({}, function (err, docs) {
-                //console.log("╚═╣IN SCHEMA.FIND()---");
                 if (err) { return console.log(err); };
                 docs.forEach(async (doc) => {
-                    //console.log("╚═╣FOREACH LOOP---");
+                    console.log(`user: ${doc.memberId}`)
                     if (Date.now()>= doc.sendAt) {
-                        //console.log(`${Date.now()} and ${doc.sendAt}`)
-                        //console.log("╚═╣IN TIME CONDITIONAL---");
                         try {
-                            const user = client.users.cache.find(u => u.id === doc.memberId);
+                            const user = client.users.cache.find(u =>u.id === doc.memberId);
                             if(!user) return console.log(`🔴ERR IN FETCHING USER`);
                             const tstr = time(new Date(doc.sendAt))
                             const dm = await user.createDM();
