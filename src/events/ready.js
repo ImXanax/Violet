@@ -7,7 +7,7 @@ module.exports = {
     async execute(client){
         const embed = new MessageEmbed().setDescription(`\`\`\`All System's Operational\`\`\``).setColor('#36057c')
         client.channels.cache.get('762670306824290321').send({embeds:[embed]});
-        console.log('✅ The bot is online -l||l-');
+        console.log('🟣 Violet Is Online >|<');
 
         const presenceArr = [
             `(╯°□°）╯︵ ┻━┻`,
