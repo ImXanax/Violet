@@ -9,7 +9,7 @@ module.exports = {
     .addStringOption(option =>option.setName('text').setDescription('Message You would like to send'))
     .addUserOption(option => option.setName('target').setDescription('person you want to send the Dm to')),
     async execute(ctx,client){
-        const isAdmin = ctx.member.roles.cache.has("734431567912370196");
+        const isAdmin = ctx.member.roles.cache.has("1006984489332920331");
         const text = ctx.options.getString('text');
         const target = ctx.options.getUser('target');
         if(isAdmin){
