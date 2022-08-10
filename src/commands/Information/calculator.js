@@ -146,6 +146,7 @@ module.exports = {
         },
       ],
       fetchReply: true,
+      ephemeral: true,
     });
     const filter = (i) => i.user.id === ctx.user.id;
     const msgCol = msg.createMessageComponentCollector(filter, 60000);
@@ -175,7 +176,7 @@ module.exports = {
       i.update({
         embeds: [
           {
-            color: "#0014e9",
+            color: "#36057c",
             description: `\`\`\`${res || `RESULTS ARE DISPLAYED HERE`}\`\`\``,
           },
         ],
