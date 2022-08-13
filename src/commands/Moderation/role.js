@@ -64,9 +64,17 @@ const miscEmbed = new MessageEmbed()
         <:dot7:866171765759934494> *** BALDCHAT |*** *This role will be pinged for planned voice calls in the voice channels*\n
       `)
       .setColor("#36057c");
-    if(str === '1') return chl.send({embeds:[roleEmbed1]})
-    else if(str === '2') return chl.send({embeds:[roleEmbed2]})
-    else if(str === '3') return chl.send({embeds:[pronounEmbed]})
-    else if(str === '4') return chl.send({embeds:[miscEmbed]})
+    if(str === '1') return chl.send({embeds:[roleEmbed1]}).then(() => {
+        ctx.reply({ content: `message has been sent to <#${chl.id}>` });
+      });
+    else if(str === '2') return chl.send({embeds:[roleEmbed2]}).then(() => {
+        ctx.reply({ content: `message has been sent to <#${chl.id}>` });
+      });
+    else if(str === '3') return chl.send({embeds:[pronounEmbed]}).then(() => {
+        ctx.reply({ content: `message has been sent to <#${chl.id}>` });
+      });
+    else if(str === '4') return chl.send({embeds:[miscEmbed]}).then(() => {
+        ctx.reply({ content: `message has been sent to <#${chl.id}>` });
+      });
   },
 };
