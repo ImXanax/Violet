@@ -9,7 +9,7 @@ const {
 } = require("discord.js");
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("say")
+    .setName("role")
     .setDescription("sends your message to the specified channel")
     .addChannelOption((option) =>
       option
