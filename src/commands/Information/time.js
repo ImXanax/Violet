@@ -23,6 +23,7 @@ module.exports = {
         :flag_jp: \`TK/JST:\`\n ${moment().tz('Asia/Tokyo').format('**HH:mm** - dddd, MMMM Do')}\n
         :flag_ir: \`IR/IRST:\`\n ${moment().tz('Asia/Tehran').format('**HH:mm** - dddd, MMMM Do')}\n
         :flag_gb: \`EU/BST:\`\n ${moment().tz('Europe/London').format('**HH:mm** - dddd, MMMM Do')}\n
+        :flag_nl: \`EU/CET:\`\n ${moment().tz('Europe/Amsterdam').format('**HH:mm** - dddd, MMMM Do')}\n
         `).setColor('#36057c')
 
     ctx.reply({embeds:[dateEmbed]})
