@@ -48,7 +48,7 @@ module.exports = {
       .setDescription(`
         **__PRONOUNS:__**
 
-        🔵 He/Him
+🔵 He/Him
 🔴 She/Her
 🟡 They/Them
 ⚪ Neopronouns
