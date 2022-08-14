@@ -32,15 +32,8 @@ module.exports = {
       .setDescription(
         `
         **__COLORS:__**\n
-        <:Raven:866775351622762526> **Wither ** #000000\n <:Lightning:866775421340352524> **Golem** #dadada\n <:Apocalypse:866787694239154266> **Overworld** #01e3ae\n <:Moonlight:866775523195355207> **Elytra** #b1bdf0\n <:Waterfall:866775592712011787> **Diamond** #5e80Fb\n <:Butterfly:866775676392570880> **River** #0044FF\n <:Vanilla:866775941475467284> **Desert** #ffc0a0\n <:Clouds:866776007980875786> **Badlands** #ff9393\n <:Zephyr:866776168203550780> **Tulip** #ed9fd7\n        
+        <:Raven:866775351622762526> **Wither ** #000000\n <:Lightning:866775421340352524> **Golem** #dadada\n <:Apocalypse:866787694239154266> **Overworld** #01e3ae\n <:Moonlight:866775523195355207> **Elytra** #b1bdf0\n <:Waterfall:866775592712011787> **Diamond** #5e80Fb\n <:Butterfly:866775676392570880> **River** #0044FF\n <:Vanilla:866775941475467284> **Desert** #ffc0a0\n <:Clouds:866776007980875786> **Badlands** #ff9393\n <:Zephyr:866776168203550780> **Tulip** #ed9fd7\n     <:Riot:866776322559049758> **Shulker** #bf99e0\n <:Euphoria:866776409292406844> **Portal** #Df5bdf\n <:Cyberpunk:866776491266146304> **Enderman** #cb0ab8\n <:Amethyst:866777697798979623> **Endermite** #7313c8\n <:Olive_Branch:866778299384856596> **Turtle** #9dd891\n <:Serpent_Green:866778478724775976> **Kelp** #4e812c\n <:Sunlight:866778568835334194> **Sand** #ffe58c\n <:Torch:866778612186611722> **Torch** #ffd816\n <:Jumpsuit:866778672409214986> **Lava** #ff812d\n <:Chrysalis:866778728326627328> **Nether** #ed3030\n <:Neon_Red:866778777727926292> **Magma** #b70f0f\n       
         `
-      )
-      .setColor("#36057c");
-    const roleEmbed2 = new MessageEmbed()
-      .setDescription(
-        `
-    <:Riot:866776322559049758> **Shulker** #bf99e0\n <:Euphoria:866776409292406844> **Portal** #Df5bdf\n <:Cyberpunk:866776491266146304> **Enderman** #cb0ab8\n <:Violet:866776625923883068> **Void** #8e51e9\n <:Amethyst:866777697798979623> **Endermite** #7313c8\n <:Olive_Branch:866778299384856596> **Turtle** #9dd891\n <:Serpent_Green:866778478724775976> **Kelp** #4e812c\n <:Sunlight:866778568835334194> **Sand** #ffe58c\n <:Torch:866778612186611722> **Torch** #ffd816\n <:Jumpsuit:866778672409214986> **Lava** #ff812d\n <:Chrysalis:866778728326627328> **Nether** #ed3030\n <:Neon_Red:866778777727926292> **Magma** #b70f0f\n
-    `
       )
       .setColor("#36057c");
 
@@ -65,9 +58,6 @@ const miscEmbed = new MessageEmbed()
       `)
       .setColor("#36057c");
     if(str === '1') return chl.send({embeds:[roleEmbed1]}).then(() => {
-        ctx.reply({ content: `message has been sent to <#${chl.id}>` });
-      });
-    else if(str === '2') return chl.send({embeds:[roleEmbed2]}).then(() => {
         ctx.reply({ content: `message has been sent to <#${chl.id}>` });
       });
     else if(str === '3') return chl.send({embeds:[pronounEmbed]}).then(() => {
