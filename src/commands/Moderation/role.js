@@ -31,7 +31,7 @@ module.exports = {
     const roleEmbed1 = new MessageEmbed()
       .setDescription(
         `
-        **__COLORS:__**
+        **__COLORS:__**\n
         <:Raven:866775351622762526> **Wither ** #000000\n <:Lightning:866775421340352524> **Golem** #dadada\n <:Apocalypse:866787694239154266> **Overworld** #01e3ae\n <:Moonlight:866775523195355207> **Elytra** #b1bdf0\n <:Waterfall:866775592712011787> **Diamond** #5e80Fb\n <:Butterfly:866775676392570880> **River** #0044FF\n <:Vanilla:866775941475467284> **Desert** #ffc0a0\n <:Clouds:866776007980875786> **Badlands** #ff9393\n <:Zephyr:866776168203550780> **Tulip** #ed9fd7\n        
         `
       )
@@ -58,10 +58,10 @@ module.exports = {
 
 const miscEmbed = new MessageEmbed()
       .setDescription(`
-        **__ANNOUNCEMENTS:__**
-        <:dot10:866172039450066964> *** ANNOUNCEMENTS |*** *This role will be pinged for general server updates, news, changes or server events*\n
-        <:dot9:866172008441446420> *** MINECRAFT |*** *This role will be pinged for Minecraft gaming events, SMP updates & changes*\n
-        <:dot7:866171765759934494> *** BALDCUSSION |*** *This role will be pinged for planned voice calls in the voice channels*\n
+        **__ANNOUNCEMENTS:__**\n
+        <:dot10:866172039450066964> *** ANNOUNCEMENTS |*** *This role will be pinged for general server updates, news, changes or server events*
+        <:dot9:866172008441446420> *** MINECRAFT |*** *This role will be pinged for Minecraft gaming events, SMP updates & changes*
+        <:dot7:866171765759934494> *** BALDCUSSION |*** *This role will be pinged for planned voice calls in the voice channels*
       `)
       .setColor("#36057c");
     if(str === '1') return chl.send({embeds:[roleEmbed1]}).then(() => {
