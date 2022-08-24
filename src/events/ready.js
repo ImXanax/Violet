@@ -10,11 +10,11 @@ module.exports = {
         console.log('🟣 Violet Is Online >|<');
 
         const presenceArr = [
-            `(╯°□°）╯︵ ┻━┻`,
-            `\\(°□°)/︵ ┻━┻ `,
-            `‿( ́ ̵ _-\`)‿`,
-            `┬─┬ ノ( ゜-゜ノ)`,
-            `(⌐■_■)`,
+            `(╯°□°）╯Aqua is bald`,
+            `\\(°□°)/Stealer is bald `,
+            `‿( ́ ̵ _-\`)‿Everyone's bald`,
+            `Baldノ( ゜-゜ノ)`,
+            `(⌐■_■)Hairless`,
         ]
         let i=0;
         setInterval(() => {
