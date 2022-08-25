@@ -10,11 +10,18 @@ module.exports = {
         console.log('🟣 Violet Is Online >|<');
 
         const presenceArr = [
-            `(╯°□°）╯Aqua is bald`,
-            `\\(°□°)/Stealer is bald `,
-            `‿( ́ ̵ _-\`)‿Everyone's bald`,
-            `Baldノ( ゜-゜ノ)`,
-            `(⌐■_■)Hairless`,
+            `Diamond Sword1`,
+            `Stealer:"XD"`,
+            `You Boost Me`,
+            `[Starters]`,
+            `Aqua:"ur mom"`,
+            `When is the game starting?`,
+            `checkpoint #7`,
+            `!buddha get`,
+            `Aly:"Mending"`,
+            `Krows Services`,
+            `Deni:"Friker"`,
+            ``,
         ]
         let i=0;
         setInterval(() => {
