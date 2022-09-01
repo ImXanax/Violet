@@ -6,7 +6,7 @@ module.exports = {
     once: true,
     async execute(client){
         const embed = new MessageEmbed().setDescription(`\`\`\`All System's Operational\`\`\``).setColor('#36057c')
-        client.channels.cache.get('1006982034134155315').send({embeds:[embed]});
+        client.channels.cache.get('1012390735611433031').send({embeds:[embed]});
         console.log('🟣 Violet Is Online >|<');
 
         const presenceArr = [
@@ -21,7 +21,6 @@ module.exports = {
             `Aly:"Mending"`,
             `Krows Services`,
             `Deni:"Friker"`,
-            ``,
         ]
         let i=0;
         setInterval(() => {

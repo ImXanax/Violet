@@ -21,7 +21,7 @@
     "moment-duration-format": "^2.3.2",
     "moment-timezone": "^0.5.34",
     "mongoose": "^6.1.4",
-    "nodemon": "^2.0.15",
+    "nodemon": "^2.0.19",
     "parse-duration": "^1.0.2"
   },
   "engines": {
