@@ -1,6 +1,7 @@
 require("dotenv").config();
 const { Client, Intents, Collection } = require("discord.js");
-const fs = require("fs");   
+const fs = require("fs");
+const Levels = require(`./funcs/Levels`)
 const client = new Client({
   partials: ["MESSAGE", "CHANNEL", "REACTION", "USER"],
   intents: [
@@ -29,6 +30,9 @@ const commandFolders = fs.readdirSync(`./src/commands`);
   for (file of functions) {
     require(`./functions/${file}`)(client);
   }
+  Levels.mongoURL(`${process.env.MONGO_LOGIN}`)
+    .then(s => console.log(`✅ Level Connected`))
+    .catch(e => console.error(`🔴 ERR in level mongo connection: ${e}`))
   client.handleEvents(eventFiles, `./src/events`);
   client.handleCommands(commandFolders, `./src/commands`);
   client.login(process.env.TOKEN);

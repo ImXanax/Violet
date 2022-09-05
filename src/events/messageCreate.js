@@ -30,24 +30,23 @@ module.exports = {
       message.guild.id,
       randomXp
     );
+    console.log('not leveled up')
     if (hasLeveledUp) {
+      console.log('has leveled up')
       const user = await Levels.fetch(message.author.id, message.guild.id);
       const levelUpEmbed = new MessageEmbed()
-        .setDescription(
-          `***__YOU HAVE LEVELED UP__***\n*${
+        .setDescription(`*${
             user.level - 1
           }* <:pick1:1014180863786881145> <:dot7:866171765759934494><:dot6:866171711749881856><:dot5:866171671907008543><:dot2:866171407023865876> <:pick2:1014180745289420800> **${
             user.level
           }**`
         )
+        .setAuthor({name:'LEVEL UP!', iconURL:`${message.author.displayAvatarURL({ format: "png"})}`,url:''})
         .setColor("#36057c")
-        .setThumbnail(
-          message.author.displayAvatarURL({ format: "jpg", dynamic: true })
-        );
       message.reply({
         content: `<@!${message.author.id}>`,
         embeds: [levelUpEmbed],
-      });
+      }).then(s => console.log(`message sent: ${s}`)).catch(e => console.log(`ERR in sending embed: ${e}`))
     }
   },
 };

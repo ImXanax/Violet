@@ -5,9 +5,10 @@ const { GuildMember, MessageEmbed, Message } = require('discord.js');
 
 module.exports = (client) =>{
     client.scheduler = async (client) =>{
+        let i = 0
         //30s Time Check
         setInterval(() => {
-            console.log("═╣INTERVAL STARTED");
+            console.log("▐▬", i+=30);
             remindSchema.find({}, function (err, docs) {
                 if (err) { return console.log(err); };
                 docs.forEach(async (doc) => {
@@ -24,7 +25,7 @@ module.exports = (client) =>{
                                 .setColor(`#36057c`)
                             await dm.send({embeds:[dmEmbed]})
                         } catch (err) { console.log(err) }
-                        await remindSchema.deleteOne(doc).then(console.log("══╣RM DELETED FROM DB---")).catch(e => console.log(e));
+                        await remindSchema.deleteOne(doc).then(console.log("▬▬DEL")).catch(e => console.log(e));
                     }
                 });
             })

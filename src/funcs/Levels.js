@@ -13,7 +13,6 @@ class Levels {
     return mongoose.connect(mongoURL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useFindAndModify: false,
     });
   }
 
@@ -90,14 +89,14 @@ class Levels {
       await newUser
         .save()
         .catch((e) => console.error(`ERR IN SAVING NEW USER ${e}`));
-      return (Math.floor(0.1 * Math.sqrt(xp)) > 0);
+      return Math.floor(0.1 * Math.sqrt(xp)) > 0;
     }
 
     user.xp += parseInt(xp, 10);
     user.level = Math.floor(0.1 * Math.sqrt(user.xp));
     user.lastUpdated = new Date();
     await user.save().catch((e) => console.error(`ERR IN ADDING XP: ${e}`));
-    return Math.floor(0.1 * Math.sqrt((user.xp -= xp)) < user.level);
+    return Math.floor(0.1 * Math.sqrt((user.xp -= xp))) < user.level;
   }
 
   //ADDING LEVEL
@@ -174,28 +173,35 @@ class Levels {
 
   //FETCH
   /**
-   * @param {string} [userId] - the user's Id.
-   * @param {string} [guildId] - the user's server Id.
+   * @param {string} [userId] - Discord user id.
+   * @param {string} [guildId] - Discord guild id.
    */
-  static async fetch(userId, guildId, position = false) {
-    if (!userId) throw new TypeError(`userId wasn't provided`);
-    if (!guildId) throw new TypeError(`guildId wasn't provided`);
 
-    const user = levelSchema.findOne({ userID: userId, guildID: guildId });
+  static async fetch(userId, guildId, fetchPosition = false) {
+    if (!userId) throw new TypeError("An user id was not provided.");
+    if (!guildId) throw new TypeError("A guild id was not provided.");
 
+    const user = await levelSchema.findOne({
+      userID: userId,
+      guildID: guildId,
+    });
     if (!user) return false;
-    if (position === true) {
-      //ld
-      const lb = await levelSchema
+
+    if (fetchPosition === true) {
+      const leaderboard = await levelSchema
         .find({
           guildID: guildId,
         })
         .sort([["xp", "descending"]])
         .exec();
-      user.position = lb.findIndex((i) => i.userID === userId) + 1;
+
+      user.position = leaderboard.findIndex((i) => i.userID === userId) + 1;
     }
-    user.cleanXp = user.xp - this.calXp(user.level);
-    user.cleanNextLevelXp = this.calXp(user.level + 1) - this.calXp(user.level);
+
+    /* To be used with canvacord or displaying xp in a pretier fashion, with each level the cleanXp stats from 0 and goes until cleanNextLevelXp when user levels up and gets back to 0 then the cleanNextLevelXp is re-calculated */
+    user.cleanXp = user.xp - this.xpFor(user.level);
+    user.cleanNextLevelXp = this.xpFor(user.level + 1) - this.xpFor(user.level);
+
     return user;
   }
 
@@ -266,21 +272,16 @@ class Levels {
   }
 
   //CALCULATING XP
-  /**
-   *@param {number} [level] - Xp required to reach that level.
+  /*
+   * @param {number} [targetLevel] - Xp required to reach that level.
    */
-  static async calXp(level) {
-    if (isNaN(level) || isNaN(parseInt(level, 10))) {
-      console.log(level)
+  static xpFor(targetLevel) {
+    if (isNaN(targetLevel) || isNaN(parseInt(targetLevel, 10)))
       throw new TypeError("Target level should be a valid number.");
-    }
-    if (isNaN(level)) {
-      level = parseInt(level, 10);
-    }
-    if (level < 0){
+    if (isNaN(targetLevel)) targetLevel = parseInt(targetLevel, 10);
+    if (targetLevel < 0)
       throw new RangeError("Target level should be a positive number.");
-    }
-    return level * level * 100;
+    return targetLevel * targetLevel * 100;
   }
 
   //CALCULATING LEADERBOARD
