@@ -141,17 +141,6 @@ module.exports = {
           content: `provided argument is wrong\navailable options are: **[add/set/remove]**`,
         });
       }
-      //FETCH
-      // ctx.member
-      // .fetch(user.id)
-      // .then((m) => {
-      //   Levels.fetch(m.user.id, m.guild.id)
-      //     .then((i) => {
-      //       console.log(i);
-      //     })
-      //     .catch((er) => console.error(er));
-      // })
-      // .catch((e) => console.error(`error in fetching user from DB: ${e}`));
     }
 
     //LEVEL

@@ -21,7 +21,10 @@ module.exports = {
                     .setDescription(`<a:level:1016698227078217788> **LEVEL:** ${dbUser.level}\n <:xp:1016698149127065701> **XP:** ${dbUser.xp}\n <:piz:1016698072627167294> **NEXT LEVEL:** ${nextLevel}`)
                     .setColor("#36057c")
                     .setThumbnail(u.displayAvatarURL({ format: "jpg" }))
-                ctx.reply({embeds:[scoreEmbed]});
+                ctx.reply({embeds:[scoreEmbed]}).then(()=> console.log('+embed success')).catch((e)=>{
+                    console.error(`err in sending embed: ${e}`)
+                    ctx.followUp({content:`Something went wrong , try again later`})
+                })
                 }).catch(e => console.error(`err in fetching dbuser: ${e}`))
         }).catch(e => console.error(`err in fetching member: ${e}`))
     }
