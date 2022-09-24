@@ -59,40 +59,40 @@ module.exports = {
     if (!isAdmin) {
       return ctx.reply("You lack the permission to use this command.");
     }
+
+    //INPUTS
+    const user = ctx.options.getUser("user");
+    const amount = ctx.options.getInteger("amount");
+    let option = ctx.options.getString("option");
+
+    option = option.toLowerCase();
     let resultEmbed = new MessageEmbed().setColor("#36057c");
+    let member = await ctx.member.fetch(user.id);
+    let dbMember = await Levels.fetch(member.user.id, member.guild.id);
+
+    /*
+    1- for getting the member
+    2- fetching member from DB
+    3- updating the members DB
+    */
+
     //XP
     if (ctx.options.getSubcommand() === "xp") {
       console.log("-XP");
-      //INPUTS
-      const user = ctx.options.getUser("user");
-      let option = ctx.options.getString("option");
-      option = option.toLowerCase();
-      const amount = ctx.options.getInteger("amount");
-
-      //OPT
+      //XP-ADD
       if (option === "add") {
         try {
-          ctx.member
-            .fetch(user.id)
-            .then((u) => {
-              Levels.fetch(u.user.id, u.guild.id)
-                .then(() => {
-                  Levels.addXp(u.user.id, u.guild.id, amount)
-                    .then(() => {
-                      resultEmbed.setDescription(
-                        `Added **${amount}** of XP to **${u.user.tag}**`
-                      );
-                      ctx.reply({ embeds: [resultEmbed] });
-                    })
-                    .catch((e) => console.error(`err in adding xp: ${e}`));
-                })
-                .catch((e) => console.error(`err in fetching member: ${e}`));
-            })
-            .catch((e) => console.error(e));
+          const result = await Levels.addXp(u.user.id, u.guild.id, amount);
+          resultEmbed.setDescription(
+            `Added **${amount}** of XP to **${u.user.tag}**`
+          );
+          ctx.reply({ embeds: [resultEmbed] });
         } catch (e) {
           console.error(`err in everything?: ${e}`);
         }
-      } else if (option === "set") {
+      }
+      //XP-SET
+      else if (option === "set") {
         try {
           ctx.member
             .fetch(user.id)
@@ -114,7 +114,9 @@ module.exports = {
         } catch (e) {
           console.error(`err in everything?: ${e}`);
         }
-      } else if (option === "remove") {
+      }
+      //XP-REMOVE
+      else if (option === "remove") {
         try {
           ctx.member
             .fetch(user.id)
