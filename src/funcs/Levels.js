@@ -116,7 +116,7 @@ class Levels {
     });
     if (!user) return false;
 
-    user.level += parseInt(level, 10);
+    user.level += parseInt(levels, 10);
     user.xp += user.level * user.level * 100;
     user.lastUpdated = new Date();
 
@@ -160,7 +160,7 @@ class Levels {
     if (!guildId) throw new TypeError(`guildId wasn't provided`);
     if (!levels) throw new TypeError(`levels wasn't provided`);
 
-    const user = levelSchema.findOne({ userID: userId, guildID: guildId });
+    const user = await levelSchema.findOne({ userID: userId, guildID: guildId });
     if (!user) return false;
 
     user.level = levels;

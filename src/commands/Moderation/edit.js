@@ -88,7 +88,7 @@ module.exports = {
           );
           ctx.reply({ embeds: [resultEmbed] });
         } catch (e) {
-          ctx.reply({ content: "404 ERROR TRY AGAIN LATER" });
+          ctx.reply({ content: "1010 ERROR TRY AGAIN LATER" });
           console.error(`⚠️: ${e}`);
         }
       }
@@ -101,7 +101,7 @@ module.exports = {
           );
           ctx.reply({ embeds: [resultEmbed] });
         } catch (e) {
-          ctx.reply({ content: "404 ERROR TRY AGAIN LATER" });
+          ctx.reply({ content: "1010 ERROR TRY AGAIN LATER" });
           console.error(`⚠️: ${e}`);
         }
       }
@@ -114,7 +114,7 @@ module.exports = {
           );
           ctx.reply({ embeds: [resultEmbed] });
         } catch (e) {
-          ctx.reply({ content: "404 ERROR TRY AGAIN LATER" });
+          ctx.reply({ content: "1010 ERROR TRY AGAIN LATER" });
           console.error(`⚠️: ${e}`);
         }
       } else {
@@ -127,87 +127,42 @@ module.exports = {
     //LEVEL
     else if (ctx.options.getSubcommand() === "level") {
       console.log("-LVL");
-      //INPUTS
-      const user = ctx.options.getUser("user");
-      let option = ctx.options.getString("option");
-      option = option.toLowerCase();
-      const amount = ctx.options.getInteger("amount");
-
       if (option === "add") {
         try {
-          ctx.member
-            .fetch(user.id)
-            .then((u) => {
-              Levels.fetch(u.user.id, u.guild.id)
-                .then(() => {
-                  Levels.addLevel(u.user.id, u.guild.id, amount)
-                    .then(() => {
-                      resultEmbed.setDescription(
-                        `Added **${amount}** of LEVEL/S to **${u.user.tag}**`
-                      );
-                      ctx.reply({ embeds: [resultEmbed] });
-                    })
-                    .catch((e) => console.error(`err in adding level: ${e}`));
-                })
-                .catch((e) => console.error(`err in fetching member: ${e}`));
-            })
-            .catch((e) => console.error(e));
+          await Levels.addLevel(member.user.id, member.guild.id, amount);
+          resultEmbed.setDescription(`Added **${amount}** of LEVEL/S to **${member.user.tag}**`);
+          ctx.reply({ embeds: [resultEmbed] });
         } catch (e) {
-          console.error(`err in everything?: ${e}`);
+          ctx.reply({ content: "1010 ERROR TRY AGAIN LATER" });
+          console.error(`⚠️: ${e}`);
         }
       } else if (option === "set") {
         try {
-          ctx.member
-            .fetch(user.id)
-            .then((u) => {
-              Levels.fetch(u.user.id, u.guild.id)
-                .then(() => {
-                  Levels.setLevel(u.user.id, u.guild.id, amount)
-                    .then(() => {
-                      resultEmbed.setDescription(
-                        `Set **${amount}** of LEVEL/S for **${u.user.tag}**`
-                      );
-                      ctx.reply({ embeds: [resultEmbed] });
-                    })
-                    .catch((e) => console.error(`err in setting LEVEL: ${e}`));
-                })
-                .catch((e) => console.error(`err in fetching member: ${e}`));
-            })
-            .catch((e) => console.error(e));
+          await Levels.setLevel(member.user.id, member.guild.id, amount);
+          resultEmbed.setDescription(
+            `Set **${amount}** of LEVEL/S for **${member.user.tag}**`
+          );
+          ctx.reply({ embeds: [resultEmbed] });
         } catch (e) {
-          console.error(`err in everything?: ${e}`);
+          ctx.reply({ content: "1010 ERROR TRY AGAIN LATER" });
+          console.error(`⚠️: ${e}`);
         }
       } else if (option === "remove") {
         try {
-          ctx.member
-            .fetch(user.id)
-            .then((u) => {
-              Levels.fetch(u.user.id, u.guild.id)
-                .then(() => {
-                  Levels.subXp(u.user.id, u.guild.id, amount)
-                    .then(() => {
-                      resultEmbed.setDescription(
-                        `Removed **${amount}** of LEVEL/S from **${u.user.tag}**`
-                      );
-                      ctx.reply({ embeds: [resultEmbed] });
-                    })
-                    .catch((e) => console.error(`err in removing LEVEL: ${e}`));
-                })
-                .catch((e) => console.error(`err in fetching member: ${e}`));
-            })
-            .catch((e) => console.error(e));
+          await Levels.subXp(member.user.id, member.guild.id, amount);
+          resultEmbed.setDescription(
+            `Removed **${amount}** of LEVEL/S from **${member.user.tag}**`
+          );
+          ctx.reply({ embeds: [resultEmbed] });
         } catch (e) {
-          console.error(`err in everything?: ${e}`);
+          ctx.reply({ content: "1010 ERROR TRY AGAIN LATER" });
+          console.error(`⚠️: ${e}`);
         }
       } else {
         ctx.reply({
-          content: `provided argument is wrong\navailable options are: **[add/set/remove]**`,
+          content: `⚠️ Provided argument is wrong\nAvailable options are: **[add/set/remove]**`,
         });
       }
-    } else {
-      ctx.reply({
-        content: `provided argument is wrong\navailable options are: **[xp/level]**`,
-      });
-    }
+    } 
   },
 };
