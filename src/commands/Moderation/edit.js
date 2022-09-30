@@ -82,65 +82,44 @@ module.exports = {
       //XP-ADD
       if (option === "add") {
         try {
-          const result = await Levels.addXp(u.user.id, u.guild.id, amount);
+          await Levels.addXp(member.user.id, member.guild.id, amount);
           resultEmbed.setDescription(
-            `Added **${amount}** of XP to **${u.user.tag}**`
+            `Added **${amount}** of XP to **${member.user.tag}**`
           );
           ctx.reply({ embeds: [resultEmbed] });
         } catch (e) {
-          console.error(`err in everything?: ${e}`);
+          ctx.reply({ content: "404 ERROR TRY AGAIN LATER" });
+          console.error(`⚠️: ${e}`);
         }
       }
       //XP-SET
       else if (option === "set") {
         try {
-          ctx.member
-            .fetch(user.id)
-            .then((u) => {
-              Levels.fetch(u.user.id, u.guild.id)
-                .then(() => {
-                  Levels.setXp(u.user.id, u.guild.id, amount)
-                    .then(() => {
-                      resultEmbed.setDescription(
-                        `Set **${amount}** of XP for **${u.user.tag}**`
-                      );
-                      ctx.reply({ embeds: [resultEmbed] });
-                    })
-                    .catch((e) => console.error(`err in setting xp: ${e}`));
-                })
-                .catch((e) => console.error(`err in fetching member: ${e}`));
-            })
-            .catch((e) => console.error(e));
+          await Levels.setXp(member.user.id, member.guild.id, amount);
+          resultEmbed.setDescription(
+            `Set **${amount}** of XP for **${member.user.tag}**`
+          );
+          ctx.reply({ embeds: [resultEmbed] });
         } catch (e) {
-          console.error(`err in everything?: ${e}`);
+          ctx.reply({ content: "404 ERROR TRY AGAIN LATER" });
+          console.error(`⚠️: ${e}`);
         }
       }
       //XP-REMOVE
       else if (option === "remove") {
         try {
-          ctx.member
-            .fetch(user.id)
-            .then((u) => {
-              Levels.fetch(u.user.id, u.guild.id)
-                .then(() => {
-                  Levels.subXp(u.user.id, u.guild.id, amount)
-                    .then(() => {
-                      resultEmbed.setDescription(
-                        `Removed **${amount}** of XP from **${u.user.tag}**`
-                      );
-                      ctx.reply({ embeds: [resultEmbed] });
-                    })
-                    .catch((e) => console.error(`err in removing xp: ${e}`));
-                })
-                .catch((e) => console.error(`err in fetching member: ${e}`));
-            })
-            .catch((e) => console.error(e));
+          await Levels.subXp(member.user.id, member.guild.id, amount);
+          resultEmbed.setDescription(
+            `Removed **${amount}** XP from **${member.user.tag}**`
+          );
+          ctx.reply({ embeds: [resultEmbed] });
         } catch (e) {
-          console.error(`err in everything?: ${e}`);
+          ctx.reply({ content: "404 ERROR TRY AGAIN LATER" });
+          console.error(`⚠️: ${e}`);
         }
       } else {
         ctx.reply({
-          content: `provided argument is wrong\navailable options are: **[add/set/remove]**`,
+          content: `⚠️ Provided argument is wrong\nAvailable options are: **[add/set/remove]**`,
         });
       }
     }
