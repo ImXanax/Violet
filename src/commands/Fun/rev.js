@@ -9,7 +9,7 @@ const {
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("rev")
-    .setDescription("reverse")
+    .setDescription("reverse what you said")
     .addStringOption((option) =>
       option.setName("text").setDescription("the text").setRequired(true)
     ),

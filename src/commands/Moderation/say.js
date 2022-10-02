@@ -28,8 +28,7 @@ module.exports = {
     const msg = ctx.options.getString("text");
     const chl = ctx.options.getChannel("channel");
     if (!isAdmin) {
-      const img = new MessageAttachment("src/assets/img/x.png");
-      return ctx.reply({ files: [img] });
+      return ctx.reply({ content: "u do not have access" });
     }
     //   let chlEmbed = new MessageEmbed()
     //     .setTitle()
