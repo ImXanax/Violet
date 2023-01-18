@@ -32,7 +32,7 @@ const commandFolders = fs.readdirSync(`./src/commands`);
   }
   Levels.mongoURL(`${process.env.MONGO_LOGIN}`)
     .then(s => console.log(`✅ Level Connected`))
-    .catch(e => console.error(`🔴 ERR in level mongo connection: ${e}`))
+    .catch(e => console.error(`🔴 Mongo connection: ${e}`))
   client.handleEvents(eventFiles, `./src/events`);
   client.handleCommands(commandFolders, `./src/commands`);
   client.login(process.env.TOKEN);

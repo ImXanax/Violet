@@ -21,6 +21,7 @@ module.exports = {
             `Aly:"Mending"`,
             `Krows Services`,
             `Deni:"Friker"`,
+            `Doors"`,
         ]
         let i=0;
         setInterval(() => {
