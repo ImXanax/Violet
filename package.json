@@ -1,20 +1,32 @@
 {
-  "name": "violet",
+  "name": "blue",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node src/Bot.ts"
+    "x": "nodemon src/index.js"
   },
-  "author": "",
+  "author": "Xanax",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^14.9.0",
-    "dotenv": "^16.0.3"
+    "@discordjs/builders": "^0.8.2",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "canvacord": "^5.4.6",
+    "date-fns": "^2.28.0",
+    "discord-api-types": "^0.24.0",
+    "discord.js": "^13.3.1",
+    "dotenv": "^10.0.0",
+    "fs": "^0.0.1-security",
+    "mathjs": "^11.0.1",
+    "moment": "^2.29.1",
+    "moment-duration-format": "^2.3.2",
+    "moment-timezone": "^0.5.34",
+    "mongoose": "^6.1.4",
+    "nodemon": "^2.0.19",
+    "parse-duration": "^1.0.2"
   },
-  "devDependencies": {
-    "@types/node": "^18.16.0",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.0.4"
+  "engines": {
+    "node": "16.x",
+    "npm": "7.x"
   }
 }
