@@ -1,7 +1,5 @@
 import {
   Client,
-  ApplicationCommandType,
-  ApplicationCommandOptionType,
   ChatInputCommandInteraction,
   EmbedBuilder,
   SlashCommandBuilder,
@@ -13,9 +11,9 @@ export default new Command({
   data: new SlashCommandBuilder()
     .setName("ping")
     .setDescription("Can you feel my heart"),
-  async run(client: Client, interaction: ChatInputCommandInteraction) {
+  async run(interaction: ChatInputCommandInteraction) {
+    console.log(interaction.client.ws);
     try {
-      console.log(interaction)
       const newEmbed = new EmbedBuilder()
         .setDescription("Pinging...")
         .setColor("Orange");
@@ -27,7 +25,7 @@ export default new Command({
         .setDescription(
           `- **LATENCY:** ${
             sent.createdTimestamp - interaction.createdTimestamp
-          }ms.\n- **PING:** ${client.ws.ping}ms`
+          }ms.\n- **PING:** ${interaction.client.ws.ping}ms`
         )
         .setColor("DarkGreen");
       interaction.editReply({ embeds: [newEmbed] });

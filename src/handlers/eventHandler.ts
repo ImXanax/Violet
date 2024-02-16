@@ -1,22 +1,22 @@
+import { Client } from "discord.js";
 import * as fs from "fs";
 import * as path from "path";
-import { Collection } from "discord.js";
-import { Vclient } from "../structures/Vclient";
 
-export async function eventHandler(client: Vclient) {
+export async function eventHandler(client:Client) {
   try {
     const eventsPath = path.join(__dirname, "../events");
-    const eventFiles = fs
+    const eventFiles: string[] = fs
       .readdirSync(eventsPath)
       .filter((file: string) => file.endsWith(".js"));
 
     for (const file of eventFiles) {
       const filePath = path.join(eventsPath, file);
-      const event = require(filePath);
+      const {default: event} = await require(filePath)
+      console.log(event)
       if (event.once) {
-        client.once(event.name, (...args: any) => event.run(...args));
+        client.once(event.name, (...args) => event.run(...args));
       } else {
-        client.on(event.name, (...args: any) => event.run(...args));
+        client.on(event.name, (...args) => event.run(...args));
       }
     }
   } catch (err) {
