@@ -12,7 +12,6 @@ export default new Command({
     .setName("ping")
     .setDescription("Can you feel my heart"),
   async run(interaction: ChatInputCommandInteraction) {
-    console.log(interaction.client.ws);
     try {
       const newEmbed = new EmbedBuilder()
         .setDescription("Pinging...")
