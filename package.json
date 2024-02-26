@@ -6,7 +6,8 @@
     "exports": "./dist/index.js",
     "scripts": {
         "compile": "tsc && node ./dist/index.js",
-        "dev": "nodemon -e ts  --exec \"npm run compile\""
+        "dev": "nodemon -e ts  --exec \"npm run deploy && npm run compile\"",
+        "deploy": "tsc && node ./dist/deploy.js"
     },
     "author": "Xanax",
     "license": "ISC",
@@ -14,11 +15,15 @@
         "@discordjs/builders": "^1.6.4",
         "axios": "^1.4.0",
         "chalk": "^4.1.2",
+        "cheerio": "^1.0.0-rc.12",
+        "diff": "^5.2.0",
         "discord.js": "^14.11.0",
         "dotenv": "^16.0.3",
+        "http": "^0.0.1-security",
         "node": "^20.5.0"
     },
     "devDependencies": {
+        "@types/diff": "^5.0.9",
         "@types/node": "^18.16.0",
         "eslint": "^8.47.0",
         "ts-node": "^10.9.2",

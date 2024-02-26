@@ -1,6 +1,12 @@
 import { config } from "dotenv";
 import { resolve } from "path";
-import { Client, Collection, GatewayIntentBits } from "discord.js";
+import {
+  Client,
+  Collection,
+  GatewayIntentBits,
+  REST,
+  Routes,
+} from "discord.js";
 import { commandHandler } from "./handlers/commandHandler";
 import { eventHandler } from "./handlers/eventHandler";
 import * as fs from "fs";
@@ -32,9 +38,14 @@ client.commands = new Collection();
       .filter((file: string) => file.endsWith(".js"));
 
     for (const file of commandFiles) {
-      const filePath = path.join(commandsPath, file);
-      const { default: command } = await import(filePath);
-      client.commands.set(command.data.data.name, command.data);
+      try {
+        const filePath = path.join(commandsPath, file);
+        const { default: command } = await import(filePath);
+        // console.log(chalk.bgBlue(command.data.data.name));
+        client.commands.set(command.data.data.name, command.data);
+      } catch (err) {
+        console.error(err);
+      }
     }
   }
   //Event Handler
@@ -44,15 +55,21 @@ client.commands = new Collection();
     .filter((file: string) => file.endsWith(".js"));
 
   for (const file of eventFiles) {
-    const filePath = path.join(eventsPath, file);
-    const { default: event } = await import(filePath);
-    console.log(event.name);
-    if (event.once) {
-      client.once(event.name, (...args) => event.run(...args));
-    } else {
-      client.on(event.name, (...args) => event.run(...args));
+    try {
+      const filePath = path.join(eventsPath, file);
+      const { default: event } = await import(filePath);
+      // console.log(chalk.bgYellow(`- ${event.name}`));
+      if (event.once) {
+        client.once(event.name, (...args) => event.run(...args));
+      } else {
+        client.on(event.name, (...args) => event.run(...args));
+      }
+    } catch (err) {
+      console.error(err);
     }
   }
 })();
-
-client.login(process.env.token);
+client
+  .login(process.env.token)
+  .then(() => console.log("🟧 Loading..."))
+  .catch((err) => console.error(err));
