@@ -32,9 +32,8 @@ module.exports = {
     /* WATCHER */
     setInterval(async () => {
       const initialHTML = fs.readFileSync("initial.html", "utf-8");
-      const $ = cheerio.load(initialHTML);
-      const allImg = $("img");
 
+      const botChannel = await client.channels.fetch("1012390735611433031");
       if (initialHTML) {
         const currentHTML = await fetchHTML(url);
         if (currentHTML) {
@@ -42,18 +41,20 @@ module.exports = {
           console.log(chalk.blue("╢ Current HTML saved."));
           const result = await compareHTML();
           if (result === 1) {
+            const $ = cheerio.load(currentHTML);
+            const allImg = $("img");
             allImg.each(function (i, img) {
               console.log($(img).attr("src"));
             });
-          }
-          client.channels.fetch("1012390735611433031").then((channel) => {
-            if (channel?.isTextBased()) {
-              const changes =
-                result === 0 ? "No Changes..." : "Changes Detected";
-              console.log(chalk.magenta("╢ " + changes));
-              channel.send({ content: changes });
+            if (botChannel?.isTextBased()) {
+              console.log(chalk.magenta("╢ " + " Changes Detected"));
+              botChannel.send({
+                content: "Changes Detected: <@413755451373518864>",
+              });
             }
-          });
+          } else {
+            console.log(chalk.magenta("╢ " + " No Changes..."));
+          }
         }
       }
     }, 10 * 60000);

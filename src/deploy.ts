@@ -6,9 +6,6 @@ import { config } from "dotenv";
 const envFilePath = path.resolve(process.cwd(), ".dev.env");
 config({ path: envFilePath });
 
-// Construct and prepare an instance of the REST module
-
-// and deploy your commands!
 (async () => {
   try {
     const token = process.env.token;

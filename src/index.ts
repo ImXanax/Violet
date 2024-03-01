@@ -28,6 +28,18 @@ client.commands = new Collection();
 
 (async () => {
   //Command Handler
+  commandHandler(client)
+  //Event Handler
+  eventHandler(client)
+  
+})();
+client
+  .login(process.env.token)
+  .then(() => console.log("🟧 Loading..."))
+  .catch((err) => console.error(err));
+
+
+  /*
   const foldersPath = path.join(__dirname, "commands");
   const commandFolders = fs.readdirSync(foldersPath);
 
@@ -48,7 +60,8 @@ client.commands = new Collection();
       }
     }
   }
-  //Event Handler
+
+
   const eventsPath = path.join(__dirname, "events");
   const eventFiles: string[] = fs
     .readdirSync(eventsPath)
@@ -68,8 +81,4 @@ client.commands = new Collection();
       console.error(err);
     }
   }
-})();
-client
-  .login(process.env.token)
-  .then(() => console.log("🟧 Loading..."))
-  .catch((err) => console.error(err));
+  */
