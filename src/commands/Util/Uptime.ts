@@ -16,16 +16,13 @@ export default new Command({
       const uptime = duration.normalize({
         milliseconds: interaction.client.uptime,
       });
-      let timeString: string = ''
-      const formattedUptime = Object.entries(uptime);
-      formattedUptime.forEach((item) => {
-        console.log(item[1]);
-        if (item[1] !== 0){
-            timeString += `${item[1]} ${item[0]} `
-        }
+      let timeString: string = "";
+      Object.entries(uptime).forEach((timeValue) => {
+        if (timeValue[1] !== 0)
+          timeString += `${timeValue[1]} ${timeValue[0]} `;
       });
       const timeEmbed = new EmbedBuilder()
-        .setDescription(timeString)
+        .setDescription(`**${timeString}**`)
         .setColor(`Blurple`);
       interaction.reply({ embeds: [timeEmbed] });
     } catch (err) {
