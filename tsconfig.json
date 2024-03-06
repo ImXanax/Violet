@@ -2,16 +2,17 @@
 
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "commonjs",
+    "target": "ESNext",
+    "module": "ESNext",
     "rootDir": "./src",
     "outDir": "./dist",
     "typeRoots": ["src/@types", "node_modules/@types"],                                  /* Specify multiple folders that act like './node_modules/@types'. */
     "removeComments": true,
     "resolveJsonModule": true,
+    "moduleResolution": "Node",
     "esModuleInterop": true,
     "strict": true,
     "strictNullChecks": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
   }
 }

@@ -1,5 +1,4 @@
-import { config } from "dotenv";
-import { resolve } from "path";
+
 import {
   Client,
   Collection,
@@ -7,11 +6,13 @@ import {
   REST,
   Routes,
 } from "discord.js";
-import { commandHandler } from "./handlers/commandHandler";
-import { eventHandler } from "./handlers/eventHandler";
-import * as fs from "fs";
-import * as path from "path";
-import chalk from "chalk";
+import { commandHandler } from "./handlers/commandHandler.js";
+import { eventHandler } from "./handlers/eventHandler.js";
+import { config } from "dotenv";
+import { dirname, resolve } from "path";
+import { fileURLToPath } from "url";
+
+
 
 const envFile = process.env.NODE_ENV === "development" ? ".dev.env" : ".env";
 const envFilePath = resolve(process.cwd(), envFile);
@@ -28,6 +29,18 @@ client.commands = new Collection();
 
 (async () => {
   //Command Handler
+  commandHandler(client)
+  //Event Handler
+  eventHandler(client)
+  
+})();
+client
+  .login(process.env.token)
+  .then(() => console.log("🟧 Loading..."))
+  .catch((err) => console.error(err));
+
+
+  /*
   const foldersPath = path.join(__dirname, "commands");
   const commandFolders = fs.readdirSync(foldersPath);
 
@@ -48,7 +61,8 @@ client.commands = new Collection();
       }
     }
   }
-  //Event Handler
+
+
   const eventsPath = path.join(__dirname, "events");
   const eventFiles: string[] = fs
     .readdirSync(eventsPath)
@@ -68,8 +82,4 @@ client.commands = new Collection();
       console.error(err);
     }
   }
-})();
-client
-  .login(process.env.token)
-  .then(() => console.log("🟧 Loading..."))
-  .catch((err) => console.error(err));
+  */

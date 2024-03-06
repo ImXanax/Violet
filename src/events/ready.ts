@@ -6,7 +6,7 @@ import chalk from "chalk";
 
 const url = "http://dmaorg.info/found/15398642_14/clancy.html";
 
-module.exports = {
+export default {
   name: Events.ClientReady,
   async run(client: Client) {
     if (!client.user || !client.application) return;
@@ -32,8 +32,7 @@ module.exports = {
     /* WATCHER */
     setInterval(async () => {
       const initialHTML = fs.readFileSync("initial.html", "utf-8");
-      const $ = cheerio.load(initialHTML);
-      const allImg = $("img");
+      const botChannel = await client.channels.fetch("1012390735611433031");
 
       if (initialHTML) {
         const currentHTML = await fetchHTML(url);
@@ -42,21 +41,23 @@ module.exports = {
           console.log(chalk.blue("╢ Current HTML saved."));
           const result = await compareHTML();
           if (result === 1) {
+            const $ = cheerio.load(currentHTML);
+            const allImg = $("img");
             allImg.each(function (i, img) {
               console.log($(img).attr("src"));
             });
-          }
-          client.channels.fetch("1012390735611433031").then((channel) => {
-            if (channel?.isTextBased()) {
-              const changes =
-                result === 0 ? "No Changes..." : "Changes Detected";
-              console.log(chalk.magenta("╢ " + changes));
-              channel.send({ content: changes });
+            if (botChannel?.isTextBased()) {
+              console.log(chalk.magenta("╢ " + " Changes Detected"));
+              botChannel.send({
+                content: "Changes Detected: <@413755451373518864>",
+              });
             }
-          });
+          } else {
+            console.log(chalk.magenta("╢ " + " No Changes..."));
+          }
         }
       }
-    }, 10 * 60000);
+    }, 1 * 60000);
   },
 };
 
@@ -84,10 +85,10 @@ async function compareHTML() {
   const initialHTML = fs.readFileSync("initial.html", "utf-8");
   const currentHTML = fs.readFileSync("current.html", "utf-8");
   if (initialHTML === currentHTML) {
-    const initialHTML = await fetchHTML(url);
-    if (initialHTML) saveHTML(initialHTML);
     return 0;
   } else {
+    const initialHTML = await fetchHTML(url);
+    if (initialHTML) saveHTML(initialHTML);
     return 1;
   }
 }
