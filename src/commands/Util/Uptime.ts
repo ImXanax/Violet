@@ -5,14 +5,16 @@ import {
   SlashCommandBuilder,
 } from "discord.js";
 import * as duration from "duration-fns";
-import { Command } from "../../structures/Command";
+import { Command } from "../../structures/Command.js";
 
 export default new Command({
   data: new SlashCommandBuilder()
     .setName("uptime")
-    .setDescription("How long was i awake for?"),
+    .setDescription("How long was i awake for?")
+    .addStringOption((option) => option.setName("name").setDescription("name")),
   async run(interaction: ChatInputCommandInteraction): Promise<void> {
     try {
+      const name = interaction.options.getString('name') ?? 'Null'
       const uptime = duration.normalize({
         milliseconds: interaction.client.uptime,
       });
@@ -24,7 +26,7 @@ export default new Command({
       const timeEmbed = new EmbedBuilder()
         .setDescription(`**${timeString}**`)
         .setColor(`Blurple`);
-      interaction.reply({ embeds: [timeEmbed] });
+      interaction.reply({ content: name , embeds: [timeEmbed] });
     } catch (err) {
       console.error(err);
     }

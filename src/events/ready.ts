@@ -6,7 +6,7 @@ import chalk from "chalk";
 
 const url = "http://dmaorg.info/found/15398642_14/clancy.html";
 
-module.exports = {
+export default {
   name: Events.ClientReady,
   async run(client: Client) {
     if (!client.user || !client.application) return;
@@ -32,8 +32,8 @@ module.exports = {
     /* WATCHER */
     setInterval(async () => {
       const initialHTML = fs.readFileSync("initial.html", "utf-8");
-
       const botChannel = await client.channels.fetch("1012390735611433031");
+
       if (initialHTML) {
         const currentHTML = await fetchHTML(url);
         if (currentHTML) {
@@ -57,7 +57,7 @@ module.exports = {
           }
         }
       }
-    }, 10 * 60000);
+    }, 1 * 60000);
   },
 };
 
@@ -85,10 +85,10 @@ async function compareHTML() {
   const initialHTML = fs.readFileSync("initial.html", "utf-8");
   const currentHTML = fs.readFileSync("current.html", "utf-8");
   if (initialHTML === currentHTML) {
-    const initialHTML = await fetchHTML(url);
-    if (initialHTML) saveHTML(initialHTML);
     return 0;
   } else {
+    const initialHTML = await fetchHTML(url);
+    if (initialHTML) saveHTML(initialHTML);
     return 1;
   }
 }

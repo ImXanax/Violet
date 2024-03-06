@@ -1,6 +1,12 @@
+import chalk from "chalk";
 import { Client, Collection } from "discord.js";
 import * as fs from "fs";
 import * as path from "path";
+import { fileURLToPath } from "url";
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export async function commandHandler(client: Client) {
   try {
@@ -15,9 +21,8 @@ export async function commandHandler(client: Client) {
 
       for (const file of commandFiles) {
         try {
-          const filePath = path.join(commandsPath, file);
+          const filePath = path.join('file://',commandsPath, file);
           const { default: command } = await import(filePath);
-          // console.log(chalk.bgBlue(command.data.data.name));
           client.commands.set(command.data.data.name, command.data);
         } catch (err) {
           console.error(err);

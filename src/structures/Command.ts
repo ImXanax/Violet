@@ -4,8 +4,10 @@ import {
 } from "discord.js";
 import { SlashCommandBuilder } from "@discordjs/builders";
 
+type CustomSlashCommandBuilder = Omit<SlashCommandBuilder,"addSubcommand" | "addSubcommandGroup">
+
 export interface CommandData {
-  data: SlashCommandBuilder;
+  data: CustomSlashCommandBuilder;
   run: (
     interaction: ChatInputCommandInteraction
   ) => void | Promise<void>;

@@ -1,5 +1,4 @@
-import { config } from "dotenv";
-import { resolve } from "path";
+
 import {
   Client,
   Collection,
@@ -7,11 +6,13 @@ import {
   REST,
   Routes,
 } from "discord.js";
-import { commandHandler } from "./handlers/commandHandler";
-import { eventHandler } from "./handlers/eventHandler";
-import * as fs from "fs";
-import * as path from "path";
-import chalk from "chalk";
+import { commandHandler } from "./handlers/commandHandler.js";
+import { eventHandler } from "./handlers/eventHandler.js";
+import { config } from "dotenv";
+import { dirname, resolve } from "path";
+import { fileURLToPath } from "url";
+
+
 
 const envFile = process.env.NODE_ENV === "development" ? ".dev.env" : ".env";
 const envFilePath = resolve(process.cwd(), envFile);
