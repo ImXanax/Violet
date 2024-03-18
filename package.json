@@ -22,11 +22,15 @@
         "discord.js": "^14.11.0",
         "dotenv": "^16.0.3",
         "duration-fns": "^3.0.2",
+        "global-tunnel-ng": "^2.7.1",
         "http": "^0.0.1-security",
-        "node": "^20.5.0"
+        "mongoose": "^8.2.1",
+        "node": "^20.5.0",
+        "node-global-proxy": "^1.0.1"
     },
     "devDependencies": {
         "@types/diff": "^5.0.9",
+        "@types/global-tunnel-ng": "^2.1.4",
         "@types/node": "^18.16.0",
         "eslint": "^8.47.0",
         "nodemon": "^3.1.0",
