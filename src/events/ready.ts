@@ -3,6 +3,7 @@ import axios from "axios";
 import * as cheerio from "cheerio";
 import * as fs from "fs";
 import chalk from "chalk";
+import { X } from "../funcs/Xan";
 
 const url = "http://dmaorg.info/found/15398642_14/clancy.html";
 
@@ -23,7 +24,7 @@ export default {
         if (channel?.isTextBased()) {
           const readyEmbed = new EmbedBuilder()
             .setDescription("```ONLINE```")
-            .setColor("Purple");
+            .setColor(X.hex.primary);
           channel.send({ embeds: [readyEmbed] });
         }
       })

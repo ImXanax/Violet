@@ -6,6 +6,7 @@ import {
 } from "discord.js";
 import * as duration from "duration-fns";
 import { Command } from "../../structures/Command.js";
+import { X } from "../../funcs/Xan.js";
 
 export default new Command({
   data: new SlashCommandBuilder()
@@ -23,7 +24,7 @@ export default new Command({
       });
       const timeEmbed = new EmbedBuilder()
         .setDescription(`**${timeString}**`)
-        .setColor(`Blurple`);
+        .setColor(X.hex.primary);
       interaction.reply({ embeds: [timeEmbed] });
     } catch (err) {
       console.error(err);

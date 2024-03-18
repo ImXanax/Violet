@@ -6,6 +6,7 @@ import {
 } from "discord.js";
 
 import { Command } from "../../structures/Command.js";
+import { X } from "../../funcs/Xan.js";
 
 export default new Command({
   data: new SlashCommandBuilder()
@@ -15,7 +16,7 @@ export default new Command({
     try {
       const newEmbed = new EmbedBuilder()
         .setDescription("Pinging...")
-        .setColor("Orange");
+        .setColor(X.hex.secondary);
       const sent = await interaction.reply({
         embeds: [newEmbed],
         fetchReply: true,
@@ -26,7 +27,7 @@ export default new Command({
             sent.createdTimestamp - interaction.createdTimestamp
           }ms.\n- **PING:** ${interaction.client.ws.ping}ms`
         )
-        .setColor("DarkGreen");
+        .setColor(X.hex.primary);
       interaction.editReply({ embeds: [newEmbed] });
     } catch (err) {
       console.error(err);

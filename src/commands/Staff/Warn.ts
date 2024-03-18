@@ -1,6 +1,8 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder,EmbedBuilder } from "discord.js";
 import { Command } from "../../structures/Command.js";
 import Warn from "../../database/schemas/warnsSchema.js";
+import { X } from "../../funcs/Xan.js";
+
 
 export default new Command({
   data: new SlashCommandBuilder()
@@ -56,7 +58,7 @@ export default new Command({
 
       const warnEmbed = new EmbedBuilder()
         .setTitle("Warn Added.")
-        .setColor("DarkPurple");
+        .setColor(X.hex.primary);
 
       const warn = new Warn({
         userId: user?.id,
@@ -88,7 +90,7 @@ export default new Command({
       let formatedWarn = "";
       const warnlistEmbed = new EmbedBuilder()
         .setTitle("User Warns:")
-        .setColor("DarkPurple");
+        .setColor(X.hex.primary);
 
       let userWarns = await Warn.find({ userId: user?.id });
       if (userWarns.length === 0) {
