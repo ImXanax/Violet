@@ -24,8 +24,10 @@ export default new Command({
     ),
   async run(interaction: ChatInputCommandInteraction): Promise<void> {
     const user = interaction.options.getUser("user");
-    const message = interaction.options.getString("message");
+    const message = interaction.options.getString("message") ?? "Nothing";
 
-    
+    const dm = await user?.createDM();
+    dm?.send(message);
+    interaction.reply("Sent");
   },
 });
