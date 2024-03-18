@@ -17,16 +17,17 @@ export default new Command({
   async run(interaction: ChatInputCommandInteraction) {
     try {
       const confirm = new ButtonBuilder()
-        .setCustomId('confirm')
+        .setCustomId("confirm")
         .setLabel("Confirm")
-        .setStyle(ButtonStyle.Primary)
+        .setStyle(ButtonStyle.Primary);
       const cancel = new ButtonBuilder()
-        .setCustomId('cancel')
-        .setLabel('Cancel')
-        .setStyle(ButtonStyle.Danger)
+        .setCustomId("cancel")
+        .setLabel("Cancel")
+        .setStyle(ButtonStyle.Danger);
 
       const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
-      confirm,cancel
+        confirm,
+        cancel
       );
       interaction.reply({ components: [row], content: "Test" });
     } catch (err) {

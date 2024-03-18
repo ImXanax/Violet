@@ -14,9 +14,11 @@ const fetchLastFmData = async () => {
   const method = "user.getinfo";
   const user = "lmxanax";
   const apiUri = `${baseUrl}?method=${method}&user=${user}&api_key=${process.env.lastfm_api}&format=json`;
-
-  const res = await fetch(apiUri);
-  return res;
+  if(process.env.lastfm_api === undefined) return
+  // const res = await fetch(apiUri);
+  const F = new SimpleFm(process.env.lastfm_api)
+  const recent =  F.user.getRecentTracks({username:'lmxanax'})
+  return recent
 };
 
 export default new Command({
@@ -28,8 +30,8 @@ export default new Command({
       if (!process.env.lastfm_api) return;
       await interaction.deferReply();
       const data = await fetchLastFmData();
-      console.log(data);
-      interaction.followUp(data.statusText);
+      console.log(data)
+      interaction.followUp('S');
     } catch (err) {
       interaction.followUp("failed");
       console.log(err);
