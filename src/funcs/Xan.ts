@@ -14,7 +14,7 @@ export class X {
     return result;
   }
   static hex: { [key: string]: ColorResolvable } = {
-    primary: "#5a51e0",
+    primary: "#f98b17",
     secondary: "#3a87da",
     fail: "#df3c2d",
   };

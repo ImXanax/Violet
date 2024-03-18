@@ -1,4 +1,4 @@
-import { REST, Routes } from "discord.js";
+import { REST, Routes ,DataResolver } from "discord.js";
 import * as fs from "fs";
 import * as path from "path";
 import { dirname } from "path";
@@ -21,6 +21,11 @@ const __dirname = dirname(__filename);
 
     const rest = new REST().setToken(token || "");
     const commands = [];
+
+    // Discord bot banner
+    // await rest.patch(Routes.user(),{
+    //   body:{banner: await DataResolver.resolveImage('C:\\Users\\Xanax\\Desktop\\asss.gif')}
+    // })
     // Grab all the command folders from the commands directory you created earlier
     const foldersPath = path.join(__dirname, "commands");
     const commandFolders = fs.readdirSync(foldersPath);
