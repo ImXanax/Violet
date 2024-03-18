@@ -1,6 +1,7 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 import { Command } from "../../structures/Command.js";
-// import SimpleFm from "@solely/simple-fm";
+import SimpleFm from "@solely/simple-fm";
+
 import { resolve } from "path";
 import { config } from "dotenv";
 
@@ -21,11 +22,7 @@ const fetchLastFmData = async () => {
 export default new Command({
   data: new SlashCommandBuilder()
     .setName("fm")
-    .setDescription("displays your last fm scrobbles")
-    .addSubcommand(command=>
-      command.setName('set')
-      .setDescription('sets the fm')
-      ),
+    .setDescription("displays your last fm scrobbles"),
   async run(interaction: ChatInputCommandInteraction): Promise<void> {
     try {
       if (!process.env.lastfm_api) return;
@@ -33,7 +30,6 @@ export default new Command({
       const data = await fetchLastFmData();
       console.log(data);
       interaction.followUp(data.statusText);
-      
     } catch (err) {
       interaction.followUp("failed");
       console.log(err);
