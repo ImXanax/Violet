@@ -2,6 +2,7 @@ import {
   Client,
   Collection,
   GatewayIntentBits,
+  Partials,
   REST,
   Routes,
 } from "discord.js";
@@ -10,7 +11,6 @@ import { eventHandler } from "./handlers/eventHandler.js";
 import { config } from "dotenv";
 import { dirname, resolve } from "path";
 import { mongoConnect } from "./database/mongoConnect.js";
-
 
 const envFile = process.env.NODE_ENV === "development" ? ".dev.env" : ".env";
 const envFilePath = resolve(process.cwd(), envFile);
@@ -21,7 +21,10 @@ const client = new Client({
     GatewayIntentBits.Guilds,
     GatewayIntentBits.DirectMessages,
     GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.DirectMessages,
   ],
+  partials: [Partials.Channel],
 });
 client.commands = new Collection();
 
@@ -31,7 +34,7 @@ client.commands = new Collection();
   //Event Handler
   eventHandler(client);
   // Connect DB
-  mongoConnect()
+  mongoConnect();
 })();
 client
   .login(process.env.token)
