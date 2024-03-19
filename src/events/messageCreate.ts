@@ -1,7 +1,4 @@
 import { ChannelType, Client, EmbedBuilder, Events, Message } from "discord.js";
-import axios from "axios";
-import * as cheerio from "cheerio";
-import * as fs from "fs";
 import chalk from "chalk";
 import { X } from "../funcs/Xan.js";
 
