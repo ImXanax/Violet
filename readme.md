@@ -63,7 +63,7 @@ To run the bot locally, follow these steps:
 
 Once the bot is running and added to your Discord server, you can interact with it using the following command:
 
-- `!hello`: Responds with "Hello, world!".
+- `/ping`: Responds with the latency of the bot.
 
 ## Resources
 
