@@ -16,7 +16,7 @@ const __dirname = dirname(__filename);
     console.log(__dirname);
 
     const token = process.env.token;
-    const guildId = process.env.guild_id;
+    // const guildId = process.env.guild_id;
     const clientId = process.env.client_id;
 
     const rest = new REST().setToken(token || "");
@@ -57,11 +57,11 @@ const __dirname = dirname(__filename);
     console.log(
       chalk.bold(chalk.yellow(`- Refreshing ${commands.length} (/) commands.`))
     );
-    if (!clientId || !guildId)
-      return console.log(chalk.red("Invalid GuildId or ClientId"));
+    if (!clientId)
+      return console.log(chalk.red("Invalid ClientId"));
     // The put method is used to fully refresh all commands in the guild with the current set
     const data = await rest.put(
-      Routes.applicationGuildCommands(clientId, guildId),
+      Routes.applicationCommands(clientId),
       { body: commands }
     );
     console.log(chalk.bold(chalk.blue(`- Reloaded (/) commands.`)));

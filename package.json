@@ -8,7 +8,9 @@
     "scripts": {
         "compile": "tsc && node ./dist/index.js",
         "dev": "nodemon -e ts  --exec \"npm run deploy && npm run compile\"",
-        "deploy": "tsc && node ./dist/deploy.js"
+        "deploy": "tsc && node ./dist/deploy.js",
+        "delete": "tsc && node ./dist/delete.js"
+
     },
     "author": "Xanax",
     "license": "ISC",
